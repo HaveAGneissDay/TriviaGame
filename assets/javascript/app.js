@@ -1,7 +1,7 @@
 //STEP !: Must load the title screen   (  X  )
 //Step 2: Must load questions X8  (  X  )
 //STEP 3: Make a Timer to countdown time left to answer questions      (  X  )
-//STEP 3: Display Score screen    (   )
+//STEP 3: Display Score screen    (  X )
 
 $(document).ready(function() {
 
@@ -93,8 +93,11 @@ $(document).ready(function() {
       $("#display").append("<button id='done'>Done</button>")
     },
     done: function() {
+      //remove the done button so it cannot be clicked again
+      $("#done").remove();
       // Checks if it is the corect answer
       $.each($("input[name='question-0']:checked"), function() {
+        //If the value i selected equals to the correct answer add to score screen
         if ($(this).val() == questions[0].correctAnswer) {
           game.correct++;
         } else {
